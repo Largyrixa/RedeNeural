@@ -17,10 +17,16 @@ CAMADA 1 20
 CAMADA 2 1
 
 #
-# TIPO_SAIDA TipoDeCamadaSaida
+# ATIVACAO_SAIDA TipoDeCamadaSaida
 #
 
-TIPO_SAIDA LMSE
+ATIVACAO_SAIDA LMSE
+
+#
+# ATIVACAO_OCULTA ReLU / sigmoid / tanh
+#
+
+ATIVACAO_OCULTA ReLU
 
 #######################
 # definição de biases #
