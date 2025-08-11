@@ -1,4 +1,3 @@
-![Build](https://img.shields.io/github/actions/workflow/status/Largyrixa/RedeNeural/build.yml?branch=main)
 ![License](https://img.shields.io/github/license/Largyrixa/RedeNeural)
 ![Language](https://img.shields.io/github/languages/top/Largyrixa/RedeNeural)
 ![Last Commit](https://img.shields.io/github/last-commit/Largyrixa/RedeNeural)
