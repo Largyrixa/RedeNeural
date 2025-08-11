@@ -16,8 +16,8 @@ FetchContent_MakeAvailable(ftxui)
 add_library(nn_sequencial src/nn_sequencial.cpp)
 target_include_directories(nn_sequencial PUBLIC includes)
 
-add_executable(draw_recognition src/draw_recognition.cpp)
-target_link_libraries(draw_recognition PUBLIC nn_sequencial ftxui::component)
+add_executable(pAInt src/pAInt.cpp)
+target_link_libraries(pAInt PUBLIC nn_sequencial ftxui::component)
 
-add_executable(exemplo src/example.cpp)
+add_executable(exemplo src/exemplo.cpp)
 target_link_libraries(exemplo PUBLIC nn_sequencial)
