@@ -17,12 +17,18 @@ namespace nn
     const char* nome;
     std::function<double(double)> funcao;
     std::function<double(double)> derivada;
+
+    func(
+      const char* nome,
+      std::function<double(double)> fn,
+      std::function<double(double)> dfn
+    ): nome(nome), funcao(fn), derivada(dfn) {}
   };
 
   extern std::unique_ptr<CamadaSaida> camada_saida_padrao;
-  extern func ReLU;
-  extern func tanh;
-  extern func sigmoid;
+  extern const func ReLU;
+  extern const func tanh;
+  extern const func sigmoid;
 
   // Implementação de uma rede neural sequencial
   class Sequencial

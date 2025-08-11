@@ -21,49 +21,49 @@ using namespace nn;
 namespace nn
 {
     std::unique_ptr<CamadaSaida> camada_saida_padrao = std::make_unique<LinearMeanSquareError>();
-    func ReLU =
-    {
+    const func ReLU
+    (
         "ReLU",
-        [&](double x)->double // Função ReLU
+        [](double x)->double // Função ReLU
         {
             return std::max(0.0,x);
         }, 
 
-        [&](double x)->double // Derivada ReLU
+        [](double x)->double // Derivada ReLU
         {
             if (x < 0) return 0.0;
             return 1.0;
         }
-    };
+    );
 
-    func tanh = 
-    {
+    const func tanh 
+    ( 
         "tanh",
-        [&](double x)->double // Função tangente hiperbólica
+        [](double x)->double // Função tangente hiperbólica
         {
             return std::tanh(x);
         },
 
-        [&](double x)->double // Derivada tangente hiperbólica
+        [](double x)->double // Derivada tangente hiperbólica
         {
             return 1.0 / std::pow(std::cosh(x), 2);
         }
-    };
+    );
 
-    func sigmoid = 
-    {
+    const func sigmoid
+    (
         "sigmoid",
-        [&](double x)->double // Função sigmoide
+        [](double x)->double // Função sigmoide
         {
             return 1.0 / (1.0 + std::exp(-x));
         },
 
-        [&](double x)->double // Derivada sigmoide
+        [](double x)->double // Derivada sigmoide
         {
             double etox = std::exp(-x);
             return (etox) / std::pow(1.0 + etox, 2);
         }
-    };
+    );
 }
 
 //
@@ -124,7 +124,7 @@ Sequencial::Sequencial(
     inicializar_biases();
 } // Sequencial
 
-Sequencial::Sequencial(const std::string &caminho)
+Sequencial::Sequencial(const std::string &caminho) : funcao_ativacao_oculta(nn::ReLU)
 {
     if (!carregar_rede(caminho, funcao_ativacao_oculta))
     {
