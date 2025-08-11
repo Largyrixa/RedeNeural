@@ -14,30 +14,15 @@ namespace nn
 
   struct func
   {
+    const char* nome;
     std::function<double(double)> funcao;
     std::function<double(double)> derivada;
   };
 
-  // Funções de ativação padrão
-  inline double ReLU(double x)
-  {
-    return std::max(0.0, x);
-  }
-
-  inline double dReLU(double x)
-  {
-    if (x < 0.0)
-    {
-      return 0.0;
-    }
-    else
-    {
-      return 1.0;
-    }
-  }
-
   extern std::unique_ptr<CamadaSaida> camada_saida_padrao;
-  extern func ativ_oculta_padrao;
+  extern func ReLU;
+  extern func tanh;
+  extern func sigmoid;
 
   // Implementação de uma rede neural sequencial
   class Sequencial
@@ -67,18 +52,17 @@ namespace nn
     Implementações de camadas de saída:
     "LMSE" - Linear Mean Square Error
     "SCE" - Softmax Cross Entropy
-
-    Por padrão, a função de ativação das camadas ocultas é a ReLU e da de saída a Linear.
     */
     Sequencial(
         const std::vector<size_t> &topologia,
-        std::string camada_saida_str = "LMSE",
-        func funcao_ativacao_oculta = nn::ativ_oculta_padrao);
+        std::string camada_saida_str,
+        func funcao_ativacao_oculta
+      );
 
     /*
     Construtor a partir de um arquivo de descrição de rede
     */
-    Sequencial(const std::string &caminho, func funcao_ativacao_oculta = nn::ativ_oculta_padrao);
+    Sequencial(const std::string &caminho);
 
     /*
     =====================================
@@ -162,7 +146,7 @@ namespace nn
     */
 
     bool salvar_rede(const std::string &caminho) const;
-    bool carregar_rede(const std::string &caminho, func funcao_ativacao_oculta = ativ_oculta_padrao);
+    bool carregar_rede(const std::string &caminho, func funcao_ativacao_oculta = ReLU);
 
     /*
     ===========

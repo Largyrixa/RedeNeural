@@ -21,7 +21,49 @@ using namespace nn;
 namespace nn
 {
     std::unique_ptr<CamadaSaida> camada_saida_padrao = std::make_unique<LinearMeanSquareError>();
-    func ativ_oculta_padrao = {ReLU, dReLU};
+    func ReLU =
+    {
+        "ReLU",
+        [&](double x)->double // Função ReLU
+        {
+            return std::max(0.0,x);
+        }, 
+
+        [&](double x)->double // Derivada ReLU
+        {
+            if (x < 0) return 0.0;
+            return 1.0;
+        }
+    };
+
+    func tanh = 
+    {
+        "tanh",
+        [&](double x)->double // Função tangente hiperbólica
+        {
+            return std::tanh(x);
+        },
+
+        [&](double x)->double // Derivada tangente hiperbólica
+        {
+            return 1.0 / std::pow(std::cosh(x), 2);
+        }
+    };
+
+    func sigmoid = 
+    {
+        "sigmoid",
+        [&](double x)->double // Função sigmoide
+        {
+            return 1.0 / (1.0 + std::exp(-x));
+        },
+
+        [&](double x)->double // Derivada sigmoide
+        {
+            double etox = std::exp(-x);
+            return (etox) / std::pow(1.0 + etox, 2);
+        }
+    };
 }
 
 //
@@ -82,7 +124,7 @@ Sequencial::Sequencial(
     inicializar_biases();
 } // Sequencial
 
-Sequencial::Sequencial(const std::string &caminho, func funcao_ativacao_oculta) : m_camada_saida(std::move(camada_saida_padrao))
+Sequencial::Sequencial(const std::string &caminho)
 {
     if (!carregar_rede(caminho, funcao_ativacao_oculta))
     {
@@ -589,11 +631,19 @@ bool Sequencial::salvar_rede(const std::string &caminho) const
     file << std::endl;
 
     file << "#" << std::endl;
-    file << "# TIPO_SAIDA TipoDeCamadaSaida" << std::endl;
+    file << "# ATIVACAO_SAIDA SCE / LMSE" << std::endl;
     file << "#" << std::endl;
     file << std::endl;
 
-    file << "TIPO_SAIDA " << m_camada_saida->get_tipo() << std::endl;
+    file << "ATIVACAO_SAIDA " << m_camada_saida->get_tipo() << std::endl;
+    file << std::endl;
+
+    file << "#" << std::endl;
+    file << "# ATIVACAO_OCULTA ReLU / tanh / sigmoid" << std::endl;
+    file << "#" << std::endl;
+    file << std::endl;
+
+    file << "ATIVACAO_OCULTA" << funcao_ativacao_oculta.nome << std::endl;
     file << std::endl;
 
     file << "#######################" << std::endl;
@@ -689,7 +739,7 @@ bool Sequencial::carregar_rede(const std::string &caminho, func funcao_ativacao_
 
             temp_top.push_back({index, neuronios});
         }
-        else if (keyword == "TIPO_SAIDA")
+        else if (keyword == "ATIVACAO_SAIDA")
         {
             std::string tipo;
             ss >> tipo;
@@ -701,6 +751,25 @@ bool Sequencial::carregar_rede(const std::string &caminho, func funcao_ativacao_
             else // valor padrão
             {
                 m_camada_saida = std::make_unique<LinearMeanSquareError>();
+            }
+        }
+        else if (keyword == "ATIVACAO_OCULTA")
+        {
+            std::string tipo;
+            ss >> tipo;
+
+
+            if (tipo == "tanh")
+            {
+                funcao_ativacao_oculta = nn::tanh;
+            }
+            else if (tipo == "sigmoid")
+            {
+                funcao_ativacao_oculta = nn::sigmoid;
+            }
+            else // valor padrão
+            {
+                funcao_ativacao_oculta = nn::ReLU;
             }
         }
     }
