@@ -1,0 +1,56 @@
+#######################################
+# ARQUIVO DE DESCRIÇÃO DE REDE NEURAL #
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
+#       >>> REDE SEQUENCIAL <<<       #
+#######################################
+
+##########################
+# definição da topologia #
+##########################
+
+#
+# CAMADA index número_de_entradas
+#
+
+CAMADA 0 2
+CAMADA 1 2
+CAMADA 2 2
+
+#
+# TIPO_SAIDA TipoDeCamadaSaida
+#
+
+TIPO_SAIDA SCE
+
+#######################
+# definição de biases #
+#######################
+
+#
+# BIAS camada bias_0 bias_1 ... bias_n-1
+#
+
+BIAS 1 -2.26211 -0.000333688
+BIAS 2 -4.04452 4.04452
+
+#######################
+# criação de ligações #
+#######################
+
+#
+# LIGACAO de_camada de_neuronio para_camada para_neuronio peso
+#
+
+# Da camada 0 para a camada 1
+
+LIGACAO 0 0 1 0 2.26222
+LIGACAO 0 0 1 1 3.21582
+LIGACAO 0 1 1 0 2.26209
+LIGACAO 0 1 1 1 3.21593
+
+# Da camada 1 para a camada 2
+
+LIGACAO 1 0 2 0 -8.22266
+LIGACAO 1 0 2 1 9.14987
+LIGACAO 1 1 2 0 3.03833
+LIGACAO 1 1 2 1 -2.66794

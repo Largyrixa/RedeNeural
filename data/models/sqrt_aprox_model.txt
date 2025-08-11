@@ -1,0 +1,88 @@
+#######################################
+# ARQUIVO DE DESCRIÇÃO DE REDE NEURAL #
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
+#       >>> REDE SEQUENCIAL <<<       #
+#######################################
+
+##########################
+# definição da topologia #
+##########################
+
+#
+# CAMADA index número_de_entradas
+#
+
+CAMADA 0 1
+CAMADA 1 20
+CAMADA 2 1
+
+#
+# TIPO_SAIDA TipoDeCamadaSaida
+#
+
+TIPO_SAIDA LMSE
+
+#######################
+# definição de biases #
+#######################
+
+#
+# BIAS camada bias_0 bias_1 ... bias_n-1
+#
+
+BIAS 1 0.201908 0.20197 0.20057 0.201996 0.201992 -2.16069 0.202022 -0.897751 -2.95946 0.201998 -2.01104 0.202034 -1.06936 -1.4835 0.201974 0.201716 -1.79319 0.1993 -3.20118 -1.14207
+BIAS 2 0.202
+
+#######################
+# criação de ligações #
+#######################
+
+#
+# LIGACAO de_camada de_neuronio para_camada para_neuronio peso
+#
+
+# Da camada 0 para a camada 1
+
+LIGACAO 0 0 1 0 0.426904
+LIGACAO 0 0 1 1 0.586583
+LIGACAO 0 0 1 2 0.0941705
+LIGACAO 0 0 1 3 0.994817
+LIGACAO 0 0 1 4 0.576606
+LIGACAO 0 0 1 5 0.670569
+LIGACAO 0 0 1 6 1.16263
+LIGACAO 0 0 1 7 1.24884
+LIGACAO 0 0 1 8 0.528516
+LIGACAO 0 0 1 9 1.02696
+LIGACAO 0 0 1 10 0.689937
+LIGACAO 0 0 1 11 0.765765
+LIGACAO 0 0 1 12 1.34896
+LIGACAO 0 0 1 13 0.832929
+LIGACAO 0 0 1 14 0.732301
+LIGACAO 0 0 1 15 0.280424
+LIGACAO 0 0 1 16 0.967833
+LIGACAO 0 0 1 17 0.0603349
+LIGACAO 0 0 1 18 0.110474
+LIGACAO 0 0 1 19 1.21169
+
+# Da camada 1 para a camada 2
+
+LIGACAO 1 0 2 0 0.0675589
+LIGACAO 1 1 2 0 0.123531
+LIGACAO 1 2 2 0 0.0725812
+LIGACAO 1 3 2 0 0.155144
+LIGACAO 1 4 2 0 0.0680447
+LIGACAO 1 5 2 0 -0.0949503
+LIGACAO 1 6 2 0 0.109165
+LIGACAO 1 7 2 0 -0.124282
+LIGACAO 1 8 2 0 -0.115716
+LIGACAO 1 9 2 0 0.155182
+LIGACAO 1 10 2 0 -0.104575
+LIGACAO 1 11 2 0 0.0290701
+LIGACAO 1 12 2 0 -0.0691825
+LIGACAO 1 13 2 0 -0.119151
+LIGACAO 1 14 2 0 0.152893
+LIGACAO 1 15 2 0 0.176387
+LIGACAO 1 16 2 0 -0.0321102
+LIGACAO 1 17 2 0 0.150239
+LIGACAO 1 18 2 0 -0.650998
+LIGACAO 1 19 2 0 -0.056827
