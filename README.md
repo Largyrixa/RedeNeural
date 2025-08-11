@@ -182,14 +182,22 @@ Uma sintaxe simples para descrever redes em arquivo de texto.
 
 ---
 
-## Contribua e compartilhe seu projeto
+## Feito com essa biblioteca
 
-Se você criar algo com esta biblioteca, por favor, adicione no repositório:
+Projetos criados usando esta biblioteca. Se você fez algo legal, abra um PR e adicione aqui!
 
-- Abra um PR adicionando um item na seção "Feito com a biblioteca":
-    - Nome do projeto, breve descrição, link do repositório e (opcional) uma imagem.
+| Projeto | Descrição | Link |
+| ------- | --------- | ---- |
+| **pAInt** | Reconhecedor de dígitos desenhados no terminal, treinado com MNIST | [Ver no repositório](src/pAInt.cpp) |
+| **Exemplo MNIST** | Avaliação de 10.000 imagens do MNIST | [Ver no repositório](src/exemplo.cpp) |
 
-Sinta-se à vontade para abrir issues com dúvidas, ideias ou melhorias.
+> Para adicionar seu projeto:
+> - Nome do projeto
+> - Breve descrição (1 linha)
+> - Link para o repositório
+> - (Opcional) imagem ou GIF demonstrativo
+
+---
 
 # Neural Network Library in C++
 
