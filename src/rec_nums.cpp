@@ -111,10 +111,10 @@ int main()
     todas_imagens.clear();
     todos_rotulos.clear();
 
-    nn::Sequencial numbr_rec({tamanho_imagem, 32, 32, 10}, "SCE");
+    nn::Sequencial numbr_rec({tamanho_imagem, 32, 32, 10}, "SCE", nn::ReLU);
 
     numbr_rec.train(entradas_treino, saidas_treino, entradas_validacao, saidas_validacao, 0.001, 10, 0.2, 1e-5);
-    numbr_rec.salvar_rede("data/models/numbr_rec_model.txt");
+    numbr_rec.salvar_rede("data/models/number_rec_model.txt");
 
     return 0;
 }

@@ -10,7 +10,7 @@
 
 #include "rede_neural.h"
 
-const char* model_path = "data/models/numbr_rec_model.txt";
+const char* model_path = "data/models/number_rec_model.txt";
 using matriz = std::vector<std::vector<u_char>>;
 using namespace ftxui;
 
