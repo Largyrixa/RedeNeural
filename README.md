@@ -29,7 +29,6 @@ Uma biblioteca C++ leve e flexível para construir, treinar e implantar redes ne
 
 Compile (Linux).
 ```bash
-chmod +x scripts/build.sh
 ./scripts/build.sh
 ```
 
