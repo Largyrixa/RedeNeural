@@ -12,7 +12,7 @@ using namespace std;
 const char* images_path = "data/dataset/t10k-images.idx3-ubyte";
 const char* labels_path = "data/dataset/t10k-labels.idx1-ubyte";
 
-const char* model_path  = "data/models/numbr_rec_model.txt";
+const char* model_path  = "data/models/number_rec_model.txt";
 
 int inverter_endian (int i)
 {
