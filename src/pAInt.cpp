@@ -87,8 +87,6 @@ int main()
     return window(text(" previsão "), vbox({
       vbox(barras_previsao),
       filler(),
-      paragraph("OBS: é mais fácil de reconhecer com um desenho maior"),
-      filler(),
       separator(),
       instrucoes,
     }) | size(WIDTH, GREATER_THAN, 40));
@@ -154,6 +152,9 @@ int main()
         for (size_t x = 0; x < tela_pixels[y].size(); ++x)
           tela_pixels[y][x] = 0;
 
+        for (auto& p : previsoes)
+          p = 0.0;
+        
         preveu = true;
         return true;
       }
