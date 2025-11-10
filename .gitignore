@@ -1,0 +1,4 @@
+src/teste.cpp
+build/
+.vscode
+stb_image.h
