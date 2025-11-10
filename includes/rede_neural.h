@@ -14,15 +14,14 @@ namespace nn
 
   struct func
   {
-    const char* nome;
+    const char *nome;
     std::function<double(double)> funcao;
     std::function<double(double)> derivada;
 
     func(
-      const char* nome,
-      std::function<double(double)> fn,
-      std::function<double(double)> dfn
-    ): nome(nome), funcao(fn), derivada(dfn) {}
+        const char *nome,
+        std::function<double(double)> fn,
+        std::function<double(double)> dfn) : nome(nome), funcao(fn), derivada(dfn) {}
   };
 
   extern std::unique_ptr<CamadaSaida> camada_saida_padrao;
@@ -62,8 +61,7 @@ namespace nn
     Sequencial(
         const std::vector<size_t> &topologia,
         std::string camada_saida_str,
-        func funcao_ativacao_oculta
-      );
+        func funcao_ativacao_oculta);
 
     /*
     Construtor a partir de um arquivo de descrição de rede
@@ -105,7 +103,7 @@ namespace nn
     */
     double calc_loss(const std::vector<Vetor> &entradas, const std::vector<Vetor> &saidas_esperadas) const;
 
-    double calc_accuracy (const std::vector<Vetor>& entradas, const std::vector<Vetor>& saidas_esperadas) const;
+    double calc_accuracy(const std::vector<Vetor> &entradas, const std::vector<Vetor> &saidas_esperadas) const;
 
     /*
     ===========================
